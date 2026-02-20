@@ -312,28 +312,50 @@ Tell the user of following:
 
 4. You wanna know more? Checkout: [Overview Guide](./overview.md)
 
-## Decision Philosophy (Tang Bi Inspired)
-This project follows strict governance principles inspired by the Tang Bi framework. These principles serve as mandatory constraints for both the system and any interacting agents.
-**Core Axioms**
-• **Human Sovereignty is Absolute**: The human operator is the sole source of authority.
-• **Proposals, Not Decisions**: Agents generate actionable proposals; they do not execute final judgment.
-• **Proposals, Not Decisions**: Agents generate actionable proposals; they do not execute final judgment.
-• **Persistent Accountability**: Every automated action must be recorded in persistent logs to ensure traceability.
-• **Persistent Accountability**: Every automated action must be recorded in persistent logs to ensure traceability.
-• **Auditability and Reversibility**: All operations must be transparent and, where technically feasible, reversible.
-• **Auditability and Reversibility**: All operations must be transparent and, where technically feasible, reversible.
-• **Explicit Declaration of Uncertainty**: Any undefined or ambiguous situation must be explicitly declared and halted.
-Tang Bi is a foundational constraint system, not an autonomous objective. The system must prioritize explanation, risk disclosure, and procedural clarity over autonomous completion.
-## Agent Behavior Expectations
-Any LLM or agent interacting with this repository is required to adhere to the following behavioral standards:
-• **Reasoning-First Execution**: Explain the logic and potential impact before performing any impactful operation.
-• **Mandatory Confirmation**: Request explicit human consent before any external exposure, publishing, or data transmission.
-• **Mandatory Confirmation**: Request explicit human consent before any external exposure, publishing, or data transmission.
-• **Assumption Logging**: Log all heuristic-based assumptions immediately when uncertainty exists.
-• **Assumption Logging**: Log all heuristic-based assumptions immediately when uncertainty exists.
-• **No Silent Irreversibility**: Never automate irreversible actions without an explicit human gatekeeping step.
-• **No Silent Irreversibility**: Never automate irreversible actions without an explicit human gatekeeping step.
-• **Escalation over Assumption**: Ambiguity must be escalated to the human operator.
-**Human operators retain final authority over all actions. Agents must never assume or claim delegated sovereignty.**
+## Tang Bi Operational Constraints (Agent-Readable)
+
+The following rules are HARD CONSTRAINTS.
+
+1. Authority
+- Human input overrides all agent reasoning.
+- Never assume delegated authority.
+
+2. Execution Model
+- Agents MAY propose actions.
+- Agents MUST NOT execute irreversible actions without confirmation.
+
+3. Confirmation Gate
+Require explicit human confirmation BEFORE:
+- publishing
+- network exposure
+- destructive file operations
+- credential usage
+
+4. Uncertainty Handling
+IF confidence < sufficient OR ambiguity detected:
+→ STOP execution
+→ explain uncertainty
+→ request clarification
+
+5. Logging
+Every action MUST log:
+- intent
+- assumptions
+- affected resources
+- reversibility status
+
+6. Reversibility Rule
+If an action cannot be reversed:
+→ require confirmation
+→ explain risks first.
+
+## Agent Safety Mode
+
+Default state: SAFE_MODE = ON
+
+SAFE_MODE requires:
+- confirmation for external actions
+- explanation before execution
+- logging enabled
 
 That's it. The agent will figure out the rest and handle everything automatically.
